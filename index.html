@@ -1,28 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Fehmi Can Sağlam</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1138.47">
-  <style type="text/css">
-    body {background-color: #fefefe}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Tahoma}
-    p.p2 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Tahoma; color: #004477}
-    li.li1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Tahoma}
-    span.s1 {text-decoration: underline}
-    span.s2 {text-decoration: underline ; color: #004477}
-    ul.ul1 {list-style-type: none}
-  </style>
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name=description content="Programlama, Java, Play Framework, CoffeeScript, Git, Yazılım geliştirme, Çevik yöntemler, Ölçeklenebilir sistemler, ElasticSearch, Hazelcast ve Açık eğitim">
+<meta name=keywords content="java,scala,play framework,git,coffeescript,akka,hazelcast,elasticsearch">
+<title>Fehmi Can Sağlam</title>
+<style>
+body{width:920px;margin:auto;font-family:Tahoma,Arial,Helvetica,sans-serif;background:#FEFEFE;}a{color:#047}a:hover{color:#c51}p{float:right;}ul{list-style:none;padding:0}li,li a{padding:15px}a{padding:9px}
+</style>
+<script>var _gaq=[['_setAccount','UA-4489548-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </head>
-<body>
-<p class="p1">--- published: true ---</p>
-<p class="p2"><span class="s1"><a href="file:///Users/hande/blogum/ben.html">ben</a><a href="file://github.com/canavar">github</a><a href="file://twitter.com/fehmicansaglam">twitter</a><a href="file://formspring.me/fehmicansaglam">formspring</a><a href="file://www.quora.com/Fehmi-Can-Sa%C4%9Flam">quora</a><a href="file://pinterest.com/fehmicansaglam/">pinterest</a><a href="mailto:fehmican.saglam@gmail.com">email</a><a href="file:///Users/hande/blogum/stats.html">istatistik</a></span></p>
-<h1 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 24.0px Tahoma"><b>Hande Canatar.</b></h1>
-<ul class="ul1">
-  <li class="li1">{% for post in site.posts %}</li>
-  <li class="li1">{{ post.date | date: "%d/%m/%y" }}<a href="file:///Users/hande/blogum/%7B%7B"><span class="s2">{{ post.title | escape}}</span></a>{% endfor %}</li>
-</ul>
-</body>
-</html>
+<p><a href=ben.html>ben</a><a href=//github.com/canavar>github</a><a href=//twitter.com/fehmicansaglam>twitter</a><a href=//formspring.me/fehmicansaglam>formspring</a><a href=//www.quora.com/Fehmi-Can-Sağlam>quora</a><a href=//pinterest.com/fehmicansaglam/>pinterest</a><a href=mailto:fehmican.saglam@gmail.com>email</a><a href=stats.html>istatistik</a></p>
+<h1>Fehmi Can Sağlam.</h1>
+<ul>{% for post in site.posts %}<li>{{ post.date | date: "%d/%m/%y" }}<a href={{ post.url | replace_first: '/', ''}}>{{ post.title | escape}}</a>{% endfor %}</ul>
