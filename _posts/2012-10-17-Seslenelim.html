@@ -75,7 +75,19 @@ keywords: IOS5, google, tts, loadrequest, UIWebView
 <div style="width:100%;text-align:center;margin:30px 0;">
   <img src="/assets/images/seslenelim_09.jpg">&nbsp<img src="/assets/images/seslenelim_10.jpg">
 
-  
 </div>
+
+<blockquote>
+Aşağıda ki şekilde simulator kaynaklı bir hata alabilirsiniz İOS 5 te bu durum bir bug olarak kabul edilmiştir. Yani gerçek telefonda sorun çıkmaz :)
+
+"2012-09-17 23:09:15.894 Seslenelim[4818:14803] Error loading /System/Library/Extensions/AudioIPCDriver.kext/Contents/Resources/AudioIPCPlugIn.bundle/Contents/MacOS/AudioIPCPlugIn:  dlopen(/System/Library/Extensions/AudioIPCDriver.kext/Contents/Resources/AudioIPCPlugIn.bundle/Contents/MacOS/AudioIPCPlugIn, 262): Symbol not found: ___CFObjCIsCollectable
+  Referenced from: /System/Library/Frameworks/Security.framework/Versions/A/Security
+  Expected in: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+ in /System/Library/Frameworks/Security.framework/Versions/A/Security"
+
+Şuradan gelişmeleri takip etmekteyim:
+http://stackoverflow.com/questions/7961840/what-does-this-gdb-output-mean
+
+</blockquote>
 
 </div>
