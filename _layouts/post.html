@@ -4,7 +4,10 @@
 <meta name="keywords" content="{{ page.keywords }}"/>
 <link href="/assets/site.css" rel="stylesheet">
 <link href="/assets/pygments/default.css" rel="stylesheet">
-<script>var _gaq=[['_setAccount','UA-4489548-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+
+
+
+
 </head>
 <title>{{ page.title }}</title>
 <div id="title"><a href="/" id="home">geri</a><h1>{{ page.title  | xml_escape }}</h1></div>
@@ -13,6 +16,7 @@
   <div id="disqus_thread"></div>
   <a href="http://disqus.com" class="dsq-brlink attribution">yorumlar <span class="logo-disqus">Disqus</span> aracılığıyla sunulmaktadır</a>
 </div>
+
 <script  type="text/javascript">
 var disqus_shortname = 'iphonekatalogcom', disqus_url = 'http://iphonekatalog.com{{ page.url }}';
 {% if page.disqus_id %}var disqus_identifier = {{ page.disqus_id }};{% else %}var disqus_identifier = '{{ page.url }}';{% endif %}
@@ -22,7 +26,6 @@ var disqus_shortname = 'iphonekatalogcom', disqus_url = 'http://iphonekatalog.co
  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 })();
 </script>
-
 
 
         
