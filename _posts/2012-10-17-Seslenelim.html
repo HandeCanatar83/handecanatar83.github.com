@@ -39,6 +39,32 @@ keywords: IOS5, google, tts, loadrequest, UIWebView
 <div style="width:100%;text-align:center;margin:30px 0;">
   <img src="/assets/images/seslenelim_05.jpg">
 </div>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/seslenelim_06.jpg">
+</div>
+<p>
+   Söyle butonu için action tanımlıyoruz.
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/seslenelim_07.jpg">
+</div>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/seslenelim_08.jpg">
+</div>
+<p>
+   ViewController.m de oluşturduğumuz aSoyle action'ı için kodlarımızı yazalım.
+</p>
 
+{% highlight objc %}
+
+- (IBAction)aSoyle:(id)sender
+{
+    NSString *someText = @"merhaba";
+   
+    NSString * url = [NSString stringWithFormat:@"http://www.translate.google.com/translate_tts?tl=tr&q=%@", someText];
+    
+    [MyWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+}
+{% endhighlight %}
 
 </div>
