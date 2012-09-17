@@ -62,9 +62,20 @@ keywords: IOS5, google, tts, loadrequest, UIWebView
     NSString *someText = @"merhaba";
    
     NSString * url = [NSString stringWithFormat:@"http://www.translate.google.com/translate_tts?tl=tr&q=%@", someText];
+
+    //Birden fazle kelime için URL Encode yapmayıunutmayın.
     
     [MyWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 {% endhighlight %}
+
+<p>
+ Ve sonuç...
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/seslenelim_09.jpg">&nbsp<img src="/assets/images/seslenelim_10.jpg">
+
+  
+</div>
 
 </div>
