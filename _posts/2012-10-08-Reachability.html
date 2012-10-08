@@ -89,23 +89,26 @@ Projenizi Build ettiğinizde hata olmaması gerekir. eğer bir hata aldıysanız
 
 <div>
 <ul>
-  <li>ViewController.m'ye Reachability.m Classımızı import ediyoruz. </li>
-<li>ViewController.h' a boolean Connected methodunu yazıyoruz.
+  <li>ViewController.m'ye Reachability.m Classımızı import ediyoruz. </li></ul>
+  <ul>
+<li>ViewController.h' a boolean Connected methodunu yazıyoruz.</li>
+
 {% highlight objc %}
 
 - (IBAction)aSoyle:(id)sender
 
      - (BOOL)connected;
 
-{% highlight objc %}</li>
-<li>ViewController.m'de methodumuzu tanımlıyoruz.{% highlight objc %}
+{% highlight objc %}
+<li>ViewController.m'de methodumuzu tanımlıyoruz.</li>
+  {% highlight objc %}
 - (BOOL)connected 
 {
     Reachability *reachability = [Reachability reachabilityForInternetConnection];  
     NetworkStatus networkStatus = [reachability currentReachabilityStatus]; 
     return !(networkStatus == NotReachable);
 }
-{% highlight objc %}</li>
+{% highlight objc %}
 
 
 </ul>
