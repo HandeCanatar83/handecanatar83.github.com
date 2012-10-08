@@ -1,0 +1,72 @@
+--- 
+title: İnternet Bağlantısı Kontrolü
+layout: post
+description: "IOS 5 te Reachability Classlarıyla İnternet bağlantısı kontrolü."
+keywords: IOS5, internet connectivity, Reachability, internet bağlantısı kontrolü,UIWebView
+---
+
+<blockquote>
+  IOS 5 te Reachability Classlarıyla İnternet bağlantısı kontrolü.
+</blockquote>
+
+<p>
+   IOS-Application-Single View Application'ı seçerek yeni bir uygulama oluşturuyoruz.
+</p>
+
+<p>
+   MainStoryboard'da ViewController'ımıza bir UIWebView ekliyoruz. Tüm View Contoller'ı kaplayacak şekilde geldiğinden biraz küçültebilirsiniz. Daha sonra da bir adet text field ve button ekleyebilirsiniz. Bugün kendimi iyi hissetmek için arka planı renklendirip butonumu da custom yaptıktan sonra resim ekliyorum. Böylece internet bağlantısı varken bir web sayfası açabileceğiz.
+</p>
+
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/reachability1.jpg">
+</div>
+
+<p>
+   ViewController seçiliyken Assitant Editor'ü tıklayarak ViewController.h'a gelelim.UIWebView, text field outlet, buton için ise action tanımlıyoruz.
+</p>
+
+   aBrowse action'ımıza ilgili kodları yazıp bir deneme yapalım.
+</p>
+{% highlight objc %}
+
+
+
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/reachability2.jpg">
+</div>
+
+
+{% highlight objc %}
+
+- (IBAction)aSoyle:(id)sender
+{
+     NSString * urlmetni = [txtbx_url text];
+    [brwser loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlmetni]]];
+    NSLog(@"%@", urlmetni);
+}
+{% endhighlight %}
+
+<p>
+ Ve sonuç...          "url'in başına http:// yazmayı unutmayın."
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/reachability3.png">&nbsp
+
+</div>
+
+<p>
+ Artık reachability Kontrolüne geçebiliriz. <a href="/assets/images/Reachability.h">Reachability.h</a> ve <a href="/assets/images/Reachability.h">Reachability.m</a> classlarımızı projemize ekliyoruz isterseniz classların güncel olmaması halinde şuradan da indirebilirsiniz:
+<a href="http://developer.apple.com/library/ios/#samplecode/Reachability/Listings/Classes_Reachability_h.html">http://developer.apple.com/library/ios/#samplecode/Reachability/Listings/Classes_Reachability_h.html</a>
+
+</p>
+
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/reachability4.png">&nbsp<img src="/assets/images/reachability5.png">
+
+
+</div>
+
+
+
+
+</div>
