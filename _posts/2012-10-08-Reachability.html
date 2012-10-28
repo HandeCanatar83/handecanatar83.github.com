@@ -37,12 +37,9 @@ keywords: IOS5, internet connectivity, Reachability, internet bağlantısı kont
 
 {% highlight objc %}
 
-- (IBAction)aSoyle:(id)sender
-{
-     NSString * urlmetni = [txtbx_url text];
+NSString * urlmetni = [txtbx_url text];
     [brwser loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlmetni]]];
     NSLog(@"%@", urlmetni);
-}
 {% endhighlight %}
 
 <p>
@@ -88,6 +85,28 @@ Build Phases - Link Binary With Libraries'den System.Configuartion framework'ün
 
 <p style="color:green">
 Projenizi Build ettiğinizde hata olmaması gerekir. eğer bir hata aldıysanız son iki adımı tekrar inceleyin :) </p>
+
+<p>
+  Şimdi internet bağlantısını kontrol edeceğimiz bool connected methodunu h ve m classlarımıza ekliyoruz.
+ </p>
+
+ {% highlight objc %}
+ // ViewController.h sayfasına eklendi.
+     - (BOOL)connected;
+{% endhighlight %}
+
+<p>ViewController.m'de methodumuzu tanımlıyoruz.</p>
+  {% highlight objc %}
+- (BOOL)connected 
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];  
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus]; 
+    return !(networkStatus == NotReachable);
+}
+{% endhighlight %}}
+
+
+
 
 
 
