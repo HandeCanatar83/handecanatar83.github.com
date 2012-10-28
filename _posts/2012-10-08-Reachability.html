@@ -67,34 +67,9 @@ keywords: IOS5, internet connectivity, Reachability, internet bağlantısı kont
 </div>
 
   <p style="color:red"><b>
-Classları ekledikten sonra projenizi çalıştırırsanız arc automatic reference counting hatası alırsınız bunu önlemek için Reachability.m class'ında arc'yi kapatacağız.</b>
-
-</p>
-<p style="color:green"><b>
-Projenizi Build ettiğinizde hata olmaması gerekir. eğer bir hata aldıysanız son iki adımı tekrar inceleyin :) </b></p>
+Classları ekledikten sonra projenizi çalıştırırsanız arc automatic reference counting hatası alırsınız bunu önlemek için Reachability.m class'ında arc'yi kapatacağız.</b></p>
 
 
-
-  <p>ViewController.m'ye Reachability.m Classımızı import ediyoruz. </p>
- 
-<p>ViewController.h' a boolean Connected methodunu yazıyoruz.</p>
-
-{% highlight objc %}
-
-- (IBAction)aSoyle:(id)sender
-
-     - (BOOL)connected;
-{% endhighlight %}
-{% highlight objc %}
-<p>ViewController.m'de methodumuzu tanımlıyoruz.</p>
-  {% highlight objc %}
-- (BOOL)connected 
-{
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];  
-    NetworkStatus networkStatus = [reachability currentReachabilityStatus]; 
-    return !(networkStatus == NotReachable);
-}
-{% endhighlight %}}
 <div style="width:100%;text-align:center;margin:30px 0;">
   <img src="/assets/images/rb8.jpg">
 </div>
@@ -111,12 +86,10 @@ Build Phases - Link Binary With Libraries'den System.Configuartion framework'ün
 
  
 
+<p style="color:green">
+Projenizi Build ettiğinizde hata olmaması gerekir. eğer bir hata aldıysanız son iki adımı tekrar inceleyin :) </p>
 
 
 
-
-
-<p>
-hohoooo 
-</p>
+  
 
