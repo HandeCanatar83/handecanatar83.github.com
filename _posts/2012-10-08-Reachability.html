@@ -105,9 +105,48 @@ Projenizi Build ettiğinizde hata olmaması gerekir. eğer bir hata aldıysanız
 }
 {% endhighlight %}}
 
+<p>
+  Artık herşey hazır olduğuna göre, ViewController.m - (void)viewDidLoad'umuz da internet bağlantısı kontrolünü yapıp eğer internet bağlantısı yoksa bir UIAlertView çıkaralım.
+ </p>
+
+  {% highlight objc %}
+- (void)viewDidLoad
+{
+    if(![self connected])
+    {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"İnternet bağlantısı yok!"
+                                                          message:@"İnternet bağlantısı yoksa sayfa görüntüleyemezsiniz :("
+                                                         delegate:nil
+                                                cancelButtonTitle:@"Tamam"
+                                                otherButtonTitles:nil];
+        
+        
+        [message show];
+        
+        
+    }
+
+    
+    [super viewDidLoad];
+
+}
+{% endhighlight %}
+
+<b>İnternet bağlantımızı kesip deneyelim.</b>
+
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/reachability_alert.jpg">
+</div>
+
+<p>
+  İşte oldu. Bu makalemde internet bağlantı kontrolünün yanı sıra UIWebView ve UIAlertView kontrollerini de kullandık. Sabırla yazımı sonuna kadar okuduğunuz için teşekkür ederim.
+
+  Özetle:
+
+  <b>Reachability classlarını ekleyin. Ve void connected methoduyla istediğiniz yerde kullanın. Sorularınız varsa yanıtlamaktan mutluluk duyarım. Seevgilerimle.</b>
 
 
-
+ </p>
 
 
   
