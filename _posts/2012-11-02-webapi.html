@@ -23,14 +23,14 @@ keywords: IOS5, restful, api, NSMutableURLRequest, NSHTTPURLResponse, NSJSONSeri
   <img src="/assets/images/api2.jpg">
 </div>
 <div style="width:100%;text-align:center;margin:30px 0;">
-  <img src="/assets/images/api5.jpg">
+  <img src="/assets/images/api4.jpg">
 </div>
 
 <p>
    Bağlan Butonundan ListeController'ın  identifierına liste yazıyoruz. Siz istediğiniz bir identifier belirtebilirsiniz. identifierlar sayesinde bir buton ile bir den fazla sayfa değişikliği de yapabilirsiniz ama bu makalemde storyboard segue konusundan detaylı olarak bahsetmeyeceğim.
 </p>
 <div style="width:100%;text-align:center;margin:30px 0;">
-  <img src="/assets/images/api4.jpg">
+  <img src="/assets/images/api5.jpg"></div>
 
 <p>
    Bağlan Butonu Action'ını tanımlayıp ve kodları yazıyoruz.
@@ -65,7 +65,8 @@ keywords: IOS5, restful, api, NSMutableURLRequest, NSHTTPURLResponse, NSJSONSeri
     NSInteger stCode = [response2 statusCode];
     if(stCode == 200)//request başarılı
     {
-        
+
+        //liste TableView'ı geçiş
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         UITableViewController * myview=[storyboard instantiateViewControllerWithIdentifier:@"liste"];
         [self presentModalViewController:myview animated:YES];
@@ -78,19 +79,110 @@ keywords: IOS5, restful, api, NSMutableURLRequest, NSHTTPURLResponse, NSJSONSeri
 }
 {% endhighlight %}
 
+<p>
+   Liste TableView'ında api ye yeni bir request de bulunup istediğimiz JSon data'yı alacağız..
+</p>
+{% highlight objc %}
+#import <UIKit/UIKit.h>
 
-</div>
+@interface ListeController : UITableViewController
+{
+    NSArray          *dicts;
+}
+
+- (void)viewDidLoad
+{
+    NSURLResponse *response;
+    NSURL *url2 = [NSURL URLWithString:@"http://carrga.4primes.com/transactions/send"];
+    NSMutableURLRequest *request2 = [NSMutableURLRequest requestWithURL:url2];
+    NSError *err2;
+    NSData * data = [NSURLConnection sendSynchronousRequest:request2 returningResponse:&response error:&err2];
+    
+    //JSON sSerialization !!!!!!!!!!!
+    NSError *anError;
+    NSString *strData = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    NSArray *JSON =
+    [NSJSONSerialization JSONObjectWithData: [strData dataUsingEncoding:NSUTF8StringEncoding]
+                                    options: NSJSONReadingMutableContainers
+                                      error: &anError];
+    dicts = [[NSMutableArray alloc] init];
+    dicts = [[JSON reverseObjectEnumerator] allObjects];
+    [super viewDidLoad];
+    
+
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+    // Return the number of rows in the section.
+    return dicts.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"hucre";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    
+        
+        
+        //UILabel *nameLabel = (UILabel *)[cell viewWithTag:2003];
+        cell.textLabel.text = [[dicts objectAtIndex:indexPath.row] objectForKey:@"emailSubject"];
+        
+        return cell;
+        
+        
+        
+   
+
+}
+@end
+
+
+
+
+{% endhighlight %}
+
+
+<p>
+   Ve sonuç..
+</p>
+
+div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/api6.jpg"></div>
 
 <blockquote>
-Aşağıdaki şekilde simulator kaynaklı bir hata alabilirsiniz İOS 5 te bu durum bir bug olarak kabul edilmiştir. Yani gerçek telefonda sorun çıkmaz :)
-</br>
-"2012-09-17 23:09:15.894 Seslenelim[4818:14803] Error loading /System/Library/Extensions/AudioIPCDriver.kext/Contents/Resources/AudioIPCPlugIn.bundle/Contents/MacOS/AudioIPCPlugIn:  dlopen(/System/Library/Extensions/AudioIPCDriver.kext/Contents/Resources/AudioIPCPlugIn.bundle/Contents/MacOS/AudioIPCPlugIn, 262): Symbol not found: ___CFObjCIsCollectable
-  Referenced from: /System/Library/Frameworks/Security.framework/Versions/A/Security
-  Expected in: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
- in /System/Library/Frameworks/Security.framework/Versions/A/Security"
+Restful Apiler veNSMutableURLRequest'ten dönebilecek Durum kodları hakkında dahe geniş bilgi için
 </br>
  
-<a href="http://stackoverflow.com/questions/7961840/what-does-this-gdb-output-mean">stackoverflow'dan</a> gelişmeleri takip edebilirsiniz:
+<a href="http://fehmicansaglam.net/herkes-restful-web-api-tasarlayabilir/">Herkes RESTful Web API tasarlayabilir</a> 
 
 
 </blockquote>
