@@ -1,0 +1,98 @@
+--- 
+title: IOS 5 ile api bağlantısı.
+layout: post
+description: "IOS 5 ile api bağlantısı."
+keywords: IOS5, restful, api, NSMutableURLRequest, NSHTTPURLResponse, NSJSONSerialization
+---
+
+<blockquote>
+  IOS 5 te NSMutableURLRequest ile web api bağlantısı yapıp, IOS 5 le birlikte gelen NSJSONSerialization ile bir sürü JSON parser classına ihtiyaç duymadan JSON'ımızı dictionary'e çevirebiliriz.
+</blockquote>
+
+<p>
+   IOS-Application-Single View Application'ı seçerek yeni bir uygulama oluşturuyoruz.
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/api1.jpg">
+</div>
+<p>
+   ViewController'ımıza bir buton ekledikten sonra bir TableViewController ekliyoruz. Ben adını ListeController koyuyorum. Mainstorybord seçiliyken sağ click yaparak - New file - Objective c class - TableViewController'ın .h ve .m classlarını projemize ekliyoruz
+</p>
+
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/api2.jpg">
+</div>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/api5.jpg">
+</div>
+
+<p>
+   Bağlan Butonundan ListeController'ın  identifierına liste yazıyoruz. Siz istediğiniz bir identifier belirtebilirsiniz. identifierlar sayesinde bir buton ile bir den fazla sayfa değişikliği de yapabilirsiniz ama bu makalemde storyboard segue konusundan detaylı olarak bahsetmeyeceğim.
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/api4.jpg">
+
+<p>
+   Bağlan Butonu Action'ını tanımlayıp ve kodları yazıyoruz.
+</p>
+
+
+{% highlight objc %}
+
+- (IBAction)aSoyle:(id)sender
+{
+    NSString *post = @"email=hande833883@gmail.com&password=888888";
+    
+    //api için gerekli e-mail ve şifreleri belirttim.
+    
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://api adresi"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    //NSHTTPURLResponse yerine NSURLResponse kullanırsanız request durum kodunu alamazsınız :( !!!!
+    NSHTTPURLResponse * response2;
+    NSError *err = [[NSError alloc] init];
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response2 error:&err];
+    
+    
+    NSInteger stCode = [response2 statusCode];
+    if(stCode == 200)//request başarılı
+    {
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UITableViewController * myview=[storyboard instantiateViewControllerWithIdentifier:@"liste"];
+        [self presentModalViewController:myview animated:YES];
+        
+    }
+    else if(stCode == 403)
+    {
+       NSLog(@"hata oluştu :(");
+    }
+}
+{% endhighlight %}
+
+
+</div>
+
+<blockquote>
+Aşağıdaki şekilde simulator kaynaklı bir hata alabilirsiniz İOS 5 te bu durum bir bug olarak kabul edilmiştir. Yani gerçek telefonda sorun çıkmaz :)
+</br>
+"2012-09-17 23:09:15.894 Seslenelim[4818:14803] Error loading /System/Library/Extensions/AudioIPCDriver.kext/Contents/Resources/AudioIPCPlugIn.bundle/Contents/MacOS/AudioIPCPlugIn:  dlopen(/System/Library/Extensions/AudioIPCDriver.kext/Contents/Resources/AudioIPCPlugIn.bundle/Contents/MacOS/AudioIPCPlugIn, 262): Symbol not found: ___CFObjCIsCollectable
+  Referenced from: /System/Library/Frameworks/Security.framework/Versions/A/Security
+  Expected in: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+ in /System/Library/Frameworks/Security.framework/Versions/A/Security"
+</br>
+ 
+<a href="http://stackoverflow.com/questions/7961840/what-does-this-gdb-output-mean">stackoverflow'dan</a> gelişmeleri takip edebilirsiniz:
+
+
+</blockquote>
+
+</div>
