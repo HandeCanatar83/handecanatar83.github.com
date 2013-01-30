@@ -1,12 +1,12 @@
 --- 
 title: IOS 6 ile Custom Pin Yapalım.
 layout: post
-description: "IOS 6 ile Custom Pin Yapalım."
+description: "IOS 6 ile Custom Pin Yapalım. Bölüm 1"
 keywords: IOS6, MKMapView, custom pin,MKPointAnnotation,CLLocationCoordinate2D.
 ---
 
 <blockquote>
-  iRate sayesinde kullanıcılarımıza uygulamamızı oylatabiliriz.
+  Custom Pin yapmak artık çok kolay..
 </blockquote>
 
 <p>
@@ -62,7 +62,7 @@ keywords: IOS6, MKMapView, custom pin,MKPointAnnotation,CLLocationCoordinate2D.
     self.mapim.delegate = self;
     CLLocationCoordinate2D annotationCoord;
     
-    annotationCoord.latitude = 41.123;
+    annotationCoord.latitude = 41.123; // yaklaşık
     annotationCoord.longitude = 29.01;
     
     MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
@@ -115,12 +115,13 @@ keywords: IOS6, MKMapView, custom pin,MKPointAnnotation,CLLocationCoordinate2D.
   <img src="/assets/images/mv10.png">
 </div>
 <p>
-   Pin'imizi daha güzel hale getirmek için..
+   Pin'imizi daha güzel hale getirmek için.. Methodumuzu ekleyelim.
 </p>
 {% highlight objc %}
 - (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    if ([[annotation title] isEqualToString:@"Köprü"])
+  // Eğer kontrol yapmazsak şuanki konumuzu bildiren blue dot dahil tüm pinler aynı olur.
+    if ([[annotation title] isEqualToString:@"Köprü"]) 
          {
              
              static NSString *AnnotationViewID = @"annotationViewID";
@@ -155,11 +156,11 @@ keywords: IOS6, MKMapView, custom pin,MKPointAnnotation,CLLocationCoordinate2D.
 
 
 <blockquote>
-Eğer Itunes Connect Hesabınızda aktif bir uygulamanız yoksa, yani geçerli bir [iRate sharedInstance].applicationBundleID = @"com.bundleım.uygulamaismi" yoksa. IRate uygulamaya ulaşamadığından hata verecektir. Ben örnek olarak gösterebilmek için valid bir applicationBundleID kullandım.
+Bu gün çok tanım yazacak günümde hissetmediğimden daha çok resimli anlatım denedim. Birden çok custom pin yaratma, usercoordinate işlemleri, didUpdateUserLocation, tüm pinleri görecek şekilde haritaya yaklaşma işlemlerini yazımın ikinci bölümünde anlatacağım.
 </br>
  
  <p>
-   Soru veya yorumlarınız varsa lütfen yazın.
+   Soru veya yorumlarınız varsa lütfen yazın.Sevgilerimle..
 </p>
  
 
