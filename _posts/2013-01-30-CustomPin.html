@@ -10,26 +10,35 @@ keywords: IOS6, MKMapView, custom pin.
 </blockquote>
 
 <p>
-   IOS-Application-Single View Application'ı seçerek yeni bir uygulama oluşturuyoruz. Ve ViewControllerımıza MKMapView ekliyoruz.
+   IOS-Application-Single View Application'ı seçerek yeni bir uygulama oluşturuyoruz. Ve ViewControllerımıza MKMapView ekliyoruz. MKMapView'ı eklediğinizde tüm Controllerı kaplar ben Mapimi biraz küçülttüm.
 </p>
 <div style="width:100%;text-align:center;margin:30px 0;">
   <img src="/assets/images/mv1.png">
 </div>
 <p>
-    <a href="/assets/docs/iRate.h">iRate.h</a> <a href="/assets/docs/iRate.m">iRate.m</a>
-   Uygulamamıza iRate.h ve iRate.m Classlarını ekliyoruz. Classların güncel halini iRate'in Github projesinden de alabilirsiniz. <a href="https://github.com/nicklockwood/iRate">nicklockwood / iRate</a> 
+    Bulunduğumuz noktayı göstermesi için attributes inspector'dan Shows User Location Behavior'ı checkliyoruz.
 </p>
 
 <div style="width:100%;text-align:center;margin:30px 0;">
-  <img src="/assets/images/iRate3.png">
+  <img src="/assets/images/mv2.png">
 </div>
-<div style="width:100%;text-align:center;margin:30px 0;">
-  <img src="/assets/images/iRate4.png">
-</div>
-
 <p>
-   Daha sonra AppDelegate.h classımızda aşağıdaki değişiklikleri yapıyoruz. nedenlerini commentlerde anlattım. :)
+   Bu durumda uygulamamızı çalıştırdığımızda hata alacağız. MapKit framework'ünü ekleyelim.
 </p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv3.png">
+</div>
+<p>
+   Uygulamamızı çalıştıralım ve Konum bilgimizin alınmasını onaylıyalım. Simulatörümüz gerçekten konum bilgisi alamadığından konumumuz Apple'ın merkezi üzerinde olacaktır :)
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv4.png">
+</div>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv5.png">
+</div>
+
+
 
 {% highlight objc %}
 //AppDelegate.h
