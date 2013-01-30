@@ -44,7 +44,7 @@ keywords: IOS6, MKMapView, custom pin,MKPointAnnotation,CLLocationCoordinate2D.
   <img src="/assets/images/mv7.png"><img src="/assets/images/mv8.png">
 </div>
 <p>
-   ViewController'ımızın viewDidLoad'una aşağıdaki kodları ekliyoruz.
+   ViewController'ımızın viewDidLoad'una aşağıdaki kodları ekleyip normal bir pin hazırlamış oluyoruz.
 </p>
 {% highlight objc %}
 #import "ViewController.h"
@@ -59,11 +59,11 @@ keywords: IOS6, MKMapView, custom pin,MKPointAnnotation,CLLocationCoordinate2D.
 {
     [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
-    
+    self.mapim.delegate = self;
     CLLocationCoordinate2D annotationCoord;
     
-    annotationCoord.latitude = 41.244;
-    annotationCoord.longitude = 29.23;
+    annotationCoord.latitude = 41.123;
+    annotationCoord.longitude = 29.01;
     
     MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
     annotationPoint.coordinate = annotationCoord;
@@ -76,74 +76,83 @@ keywords: IOS6, MKMapView, custom pin,MKPointAnnotation,CLLocationCoordinate2D.
 {% endhighlight %}
 
 <div style="width:100%;text-align:center;margin:30px 0;">
-  <img src="/assets/images/mv9.png"><img src="/assets/images/mv8.png">
+  <img src="/assets/images/mv9.png">
 </div>
-
+<p>
+   Pinin bulunduğu region'a yaklaşmak için ViewDidLoad'daki kodu aşağıdaki şekilde değiştiriyorum.
+</p>
 
 {% highlight objc %}
-//AppDelegate.m
-
-#import "AppDelegate.h"
-#import "iRate.h"//--3
-#import "ViewController.h"//--4
-
-@implementation AppDelegate
-@synthesize viewController;//--5
-@synthesize window;//--6
-
-+ (void)initialize
+- (void)viewDidLoad
 {
-    //--7
-    [iRate sharedInstance].applicationBundleID = @"com.bundleım.uygulamaismi";
-    // bundleım : provisioning portalda daha önce oluşturduğunuz Bundle Identifier (App ID Suffix)
-    // uygulamaismi : uygulama ismi işte :)
+    [super viewDidLoad];
+  // Do any additional setup after loading the view, typically from a nib.
+    self.mapim.delegate = self;
+    CLLocationCoordinate2D annotationCoord;
     
+    annotationCoord.latitude = 41.123; // yaklaşık
+    annotationCoord.longitude = 29.01;
     
-    [iRate sharedInstance].onlyPromptIfLatestVersion = NO;
+    MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
+    annotationPoint.coordinate = annotationCoord;
+    annotationPoint.title = @"Köprü";
+    annotationPoint.subtitle = @"Boğaziçi köprüsü";
     
-    //enable preview mode
-    [iRate sharedInstance].previewMode = YES;
-    //Test uygulamasında çalıştığımız için 5 gün beklemeyeceğiz ve iRate hemen çalışacak. Uygulamanızı submit etmeden önce bu satırı SİLMEYİ unutmayın !!!!!
+    MKCoordinateRegion region;
+    region.center.latitude = annotationCoord.latitude;
+    region.center.longitude = annotationCoord.longitude;
+    region.span.latitudeDelta = 200; //kendinize uygun değeri bulana kadar biraz denemeniz gerekebilir :)
+    region.span.longitudeDelta = 200;
+    region = [mapim regionThatFits:region];
+    [mapim setRegion:region animated:TRUE];
     
-    
-    
-    //Kullanıcı uygulamızı yükledikten kaç gün sonra iRate bizim için oy isteyecek.
-    [iRate sharedInstance].daysUntilPrompt = 5;
-    [iRate sharedInstance].usesUntilPrompt = 15;
-    //--7
+    [mapim annotationVisibleRect];
+    [mapim addAnnotation:annotationPoint];
+    [mapim setCenterCoordinate:annotationPoint.coordinate];
 }
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-    //--8
-    [window addSubview:viewController.view];
-    [window makeKeyAndVisible];
-    //--8
-    return YES;;
-}
-
-
 {% endhighlight %}
-
-<p>
-   Uygylamayı build ettiğinizde StoreKit framework hatası alacağız. Ve StoreKit framework'ünü ekleyelim
-</p>
-
-
-
 <div style="width:100%;text-align:center;margin:30px 0;">
-  <img src="/assets/images/iRate6.png"></div>
-
+  <img src="/assets/images/mv10.png">
+</div>
 <p>
-  <div style="width:100%;text-align:center;margin:30px 0;">
-<img src="/assets/images/iRate7.png"></div>
-
-<p>
-   Ve... Bitti. IRate..
+   Pin'imizi daha güzel hale getirmek için..
 </p>
+{% highlight objc %}
+- (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if ([[annotation title] isEqualToString:@"Köprü"])
+         {
+             
+             static NSString *AnnotationViewID = @"annotationViewID";
+             
+             MKAnnotationView *annotationView = (MKAnnotationView *)[mapim dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
+             
+             if (annotationView == nil)
+             {
+                 annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
+             }
+             
+             annotationView.image = [UIImage imageNamed:@"mavipin.png"];
+             annotationView.annotation = annotation;
+             
+             annotationView.enabled = YES;
+             
+             annotationView.canShowCallout = YES;
+             annotationView.multipleTouchEnabled = NO;
+             return annotationView;
+             
+         }
+         else
+         {
+             return nil;
+         }
+         
+}
+{% endhighlight %}
 <div style="width:100%;text-align:center;margin:30px 0;">
-  <img src="/assets/images/iRate8.png"></div>
-<p>
+  <img src="/assets/images/mv11.png">
+</div>
+
 
 <blockquote>
 Eğer Itunes Connect Hesabınızda aktif bir uygulamanız yoksa, yani geçerli bir [iRate sharedInstance].applicationBundleID = @"com.bundleım.uygulamaismi" yoksa. IRate uygulamaya ulaşamadığından hata verecektir. Ben örnek olarak gösterebilmek için valid bir applicationBundleID kullandım.
