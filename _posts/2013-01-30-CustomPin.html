@@ -1,0 +1,132 @@
+--- 
+title: IOS 6 ile Custom Pin Yapalım.
+layout: post
+description: "IOS 6 ile Custom Pin Yapalım."
+keywords: IOS6, MKMapView, custom pin.
+---
+
+<blockquote>
+  iRate sayesinde kullanıcılarımıza uygulamamızı oylatabiliriz.
+</blockquote>
+
+<p>
+   IOS-Application-Single View Application'ı seçerek yeni bir uygulama oluşturuyoruz. Ve ViewControllerımıza MKMapView ekliyoruz.
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv1.png">
+</div>
+<p>
+    <a href="/assets/docs/iRate.h">iRate.h</a> <a href="/assets/docs/iRate.m">iRate.m</a>
+   Uygulamamıza iRate.h ve iRate.m Classlarını ekliyoruz. Classların güncel halini iRate'in Github projesinden de alabilirsiniz. <a href="https://github.com/nicklockwood/iRate">nicklockwood / iRate</a> 
+</p>
+
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/iRate3.png">
+</div>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/iRate4.png">
+</div>
+
+<p>
+   Daha sonra AppDelegate.h classımızda aşağıdaki değişiklikleri yapıyoruz. nedenlerini commentlerde anlattım. :)
+</p>
+
+{% highlight objc %}
+//AppDelegate.h
+
+#import <UIKit/UIKit.h>
+@class ViewController; //--1
+// iRate mesajından sonra hangi view ile uygulamanız başlayacak
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic, strong) IBOutlet ViewController *viewController;//--2
+//ViewController'ı IRate e göstermek için bir property hazırladık.
+
+@end
+{% endhighlight %}
+
+<p>
+   AppDelegate.m classımıza gelip kodlarımızı ekliyoruz.
+</p>
+
+
+{% highlight objc %}
+//AppDelegate.m
+
+#import "AppDelegate.h"
+#import "iRate.h"//--3
+#import "ViewController.h"//--4
+
+@implementation AppDelegate
+@synthesize viewController;//--5
+@synthesize window;//--6
+
++ (void)initialize
+{
+    //--7
+    [iRate sharedInstance].applicationBundleID = @"com.bundleım.uygulamaismi";
+    // bundleım : provisioning portalda daha önce oluşturduğunuz Bundle Identifier (App ID Suffix)
+    // uygulamaismi : uygulama ismi işte :)
+    
+    
+    [iRate sharedInstance].onlyPromptIfLatestVersion = NO;
+    
+    //enable preview mode
+    [iRate sharedInstance].previewMode = YES;
+    //Test uygulamasında çalıştığımız için 5 gün beklemeyeceğiz ve iRate hemen çalışacak. Uygulamanızı submit etmeden önce bu satırı SİLMEYİ unutmayın !!!!!
+    
+    
+    
+    //Kullanıcı uygulamızı yükledikten kaç gün sonra iRate bizim için oy isteyecek.
+    [iRate sharedInstance].daysUntilPrompt = 5;
+    [iRate sharedInstance].usesUntilPrompt = 15;
+    //--7
+}
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    // Override point for customization after application launch.
+    //--8
+    [window addSubview:viewController.view];
+    [window makeKeyAndVisible];
+    //--8
+    return YES;;
+}
+
+
+{% endhighlight %}
+
+<p>
+   Uygylamayı build ettiğinizde StoreKit framework hatası alacağız. Ve StoreKit framework'ünü ekleyelim
+</p>
+
+
+
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/iRate6.png"></div>
+
+<p>
+  <div style="width:100%;text-align:center;margin:30px 0;">
+<img src="/assets/images/iRate7.png"></div>
+
+<p>
+   Ve... Bitti. IRate..
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/iRate8.png"></div>
+<p>
+
+<blockquote>
+Eğer Itunes Connect Hesabınızda aktif bir uygulamanız yoksa, yani geçerli bir [iRate sharedInstance].applicationBundleID = @"com.bundleım.uygulamaismi" yoksa. IRate uygulamaya ulaşamadığından hata verecektir. Ben örnek olarak gösterebilmek için valid bir applicationBundleID kullandım.
+</br>
+ 
+ <p>
+   Soru veya yorumlarınız varsa lütfen yazın.
+</p>
+ 
+
+
+</blockquote>
+
+</div>
