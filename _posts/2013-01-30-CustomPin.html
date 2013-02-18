@@ -1,0 +1,170 @@
+--- 
+title: IOS 6 ile Custom Pin Yapalım Bölüm 1.
+layout: post
+description: "IOS 6 ile Custom Pin Yapalım. Bölüm 1"
+keywords: IOS6, MKMapView, custom pin,MKPointAnnotation,CLLocationCoordinate2D.
+---
+
+<blockquote>
+  Custom Pin yapmak artık çok kolay..
+</blockquote>
+
+<p>
+   IOS-Application-Single View Application'ı seçerek yeni bir uygulama oluşturuyoruz. Ve ViewControllerımıza MKMapView ekliyoruz. MKMapView'ı eklediğinizde tüm Controllerı kaplar ben Mapimi biraz küçülttüm.
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv1.png">
+</div>
+<p>
+    Bulunduğumuz noktayı göstermesi için attributes inspector'dan Shows User Location Behavior'ı checkliyoruz.
+</p>
+
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv2.png">
+</div>
+<p>
+   Bu durumda uygulamamızı çalıştırdığımızda hata alacağız. MapKit framework'ünü ekleyelim.
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv3.png">
+</div>
+<p>
+   Uygulamamızı çalıştıralım ve Konum bilgimizin alınmasını onaylıyalım. Simulatörümüz gerçekten konum bilgisi alamadığından konumumuz Apple'ın merkezi üzerinde olacaktır :)
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv4.png">
+</div>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv5.png">
+</div>
+<p>
+   Artık Custom Pin yapabiliriz. Map'imize pin ekleyebilmek için bir property oluşturup @synthesize edelim.
+</p>
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv7.png"><img src="/assets/images/mv8.png">
+</div>
+<p>
+   ViewController'ımızın viewDidLoad'una aşağıdaki kodları ekleyip normal bir pin hazırlamış oluyoruz.
+</p>
+{% highlight objc %}
+#import "ViewController.h"
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+@synthesize mapim;
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+  // Do any additional setup after loading the view, typically from a nib.
+    self.mapim.delegate = self;
+    CLLocationCoordinate2D annotationCoord;
+    
+    annotationCoord.latitude = 41.123; // yaklaşık
+    annotationCoord.longitude = 29.01;
+    
+    MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
+    annotationPoint.coordinate = annotationCoord;
+    annotationPoint.title = @"Köprü";
+    annotationPoint.subtitle = @"Boğaziçi köprüsü";
+    [mapim annotationVisibleRect];
+    [mapim addAnnotation:annotationPoint];
+    [mapim setCenterCoordinate:annotationPoint.coordinate];
+}
+{% endhighlight %}
+
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv9.png">
+</div>
+<p>
+   Pinin bulunduğu region'a yaklaşmak için ViewDidLoad'daki kodu aşağıdaki şekilde değiştiriyorum.
+</p>
+
+{% highlight objc %}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+  // Do any additional setup after loading the view, typically from a nib.
+    self.mapim.delegate = self;
+    CLLocationCoordinate2D annotationCoord;
+    
+    annotationCoord.latitude = 41.123; // yaklaşık
+    annotationCoord.longitude = 29.01;
+    
+    MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
+    annotationPoint.coordinate = annotationCoord;
+    annotationPoint.title = @"Köprü";
+    annotationPoint.subtitle = @"Boğaziçi köprüsü";
+    
+    MKCoordinateRegion region;
+    region.center.latitude = annotationCoord.latitude;
+    region.center.longitude = annotationCoord.longitude;
+    region.span.latitudeDelta = 200; //kendinize uygun değeri bulana kadar biraz denemeniz gerekebilir :)
+    region.span.longitudeDelta = 200;
+    region = [mapim regionThatFits:region];
+    [mapim setRegion:region animated:TRUE];
+    
+    [mapim annotationVisibleRect];
+    [mapim addAnnotation:annotationPoint];
+    [mapim setCenterCoordinate:annotationPoint.coordinate];
+}
+{% endhighlight %}
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv10.png">
+</div>
+<p>
+   Pin'imizi daha güzel hale getirmek için.. Methodumuzu ekleyelim.
+</p>
+{% highlight objc %}
+- (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation
+{
+  // Eğer kontrol yapmazsak şuanki konumuzu bildiren blue dot dahil tüm pinler aynı olur.
+    if ([[annotation title] isEqualToString:@"Köprü"]) 
+         {
+             
+             static NSString *AnnotationViewID = @"annotationViewID";
+             
+             MKAnnotationView *annotationView = (MKAnnotationView *)[mapim dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
+             
+             if (annotationView == nil)
+             {
+                 annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
+             }
+             
+             annotationView.image = [UIImage imageNamed:@"mavipin.png"];
+             annotationView.annotation = annotation;
+             
+             annotationView.enabled = YES;
+             
+             annotationView.canShowCallout = YES;
+             annotationView.multipleTouchEnabled = NO;
+             return annotationView;
+             
+         }
+         else
+         {
+             return nil;
+         }
+         
+}
+{% endhighlight %}
+<div style="width:100%;text-align:center;margin:30px 0;">
+  <img src="/assets/images/mv11.png">
+</div>
+
+
+<blockquote>
+Bu gün çok tanım yazacak günümde hissetmediğimden daha çok resimli anlatım denedim. Birden çok custom pin yaratma, usercoordinate işlemleri, didUpdateUserLocation, tüm pinleri görecek şekilde haritaya yaklaşma işlemlerini yazımın ikinci bölümünde anlatacağım.
+</br>
+ 
+ <p>
+   Soru veya yorumlarınız varsa lütfen yazın.Sevgilerimle..
+</p>
+ 
+
+
+</blockquote>
+
+</div>
