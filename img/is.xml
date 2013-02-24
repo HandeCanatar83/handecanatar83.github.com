@@ -14,8 +14,8 @@
 		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-0.pdf</string>
 	</dict>
 	<dict>
-		<key>Magazine-1</key>
-		<string>Iphone Katalog Dergi</string>
+		<key>Name</key>
+		<string>Magazine-1</string>
 		<key>Title</key>
 		<string>Ekim Sayısı - 10</string>
 		<key>Date</key>
@@ -26,8 +26,8 @@
 		<string>http://iphonekatalog.com/img/samp.pdf</string>
 	</dict>
 	<dict>
-		<key>Magazine-2/key>
-		<string>Iphone Katalog Dergi</string>
+		<key>Name</key>
+		<string>Magazine-2</string>
 		<key>Title</key>
 		<string>Eylül Sayısı - 9</string>
 		<key>Date</key>
@@ -38,8 +38,8 @@
 		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-2.pdf</string>
 	</dict>
 	<dict>
-		<key>Magazine-3</key>
-		<string>Iphone Katalog Dergi</string>
+		<key>Name</key>
+		<string>Magazine-3</string>
 		<key>Title</key>
 		<string>Ağustos Sayısı - 8</string>
 		<key>Date</key>
@@ -50,8 +50,8 @@
 		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-3.pdf</string>
 	</dict>
 	<dict>
-		<key>Magazine-4/key>
-		<string>Iphone Katalog Dergi</string>
+		<key>Name</key>
+		<string>Magazine-4</string>
 		<key>Title</key>
 		<string>Temmuz Sayısı - 7</string>
 		<key>Date</key>
