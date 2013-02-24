@@ -3,11 +3,11 @@
 <array>
 	<dict>
 		<key>Name</key>
-		<string>Magazine-0</string>
+		<string>Iphone Katalog Dergi</string>
 		<key>Title</key>
-		<string>Magazine Issue 0</string>
+		<string>Kasım Sayısı - 11</string>
 		<key>Date</key>
-		<date>2011-10-01T06:00:00Z</date>
+		<date>2013-11-01T06:00:00Z</date>
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/kapak1.png</string>
 		<key>Content</key>
@@ -15,11 +15,11 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>Hande</string>
+		<string>Iphone Katalog Dergi</string>
 		<key>Title</key>
-		<string>Magazine Hande</string>
+		<string>Ekim Sayısı - 10</string>
 		<key>Date</key>
-		<date>2011-10-15T06:00:00Z</date>
+		<date>2013-10-15T06:00:00Z</date>
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/kapak2.png</string>
 		<key>Content</key>
@@ -27,11 +27,11 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>Magazine-2</string>
+		<string>Iphone Katalog Dergi</string>
 		<key>Title</key>
-		<string>Magazine Issue 2</string>
+		<string>Eylül Sayısı - 9</string>
 		<key>Date</key>
-		<date>2011-11-01T07:00:00Z</date>
+		<date>2013-09-01T07:00:00Z</date>
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/kapak3.png</string>
 		<key>Content</key>
@@ -39,11 +39,11 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>Magazine-3</string>
+		<string>Iphone Katalog Dergi</string>
 		<key>Title</key>
-		<string>Magazine Issue 3</string>
+		<string>Ağustos Sayısı - 8</string>
 		<key>Date</key>
-		<date>2011-11-15T07:00:00Z</date>
+		<date>2013-08-15T07:00:00Z</date>
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/kapak4.png</string>
 		<key>Content</key>
@@ -51,11 +51,11 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>Magazine-4</string>
+		<string>Iphone Katalog Dergi</string>
 		<key>Title</key>
-		<string>Magazine Issue 4</string>
+		<string>Temmuz Sayısı - 7</string>
 		<key>Date</key>
-		<date>2011-12-01T07:00:00Z</date>
+		<date>2013-07-01T07:00:00Z</date>
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/kapak5.png</string>
 		<key>Content</key>
