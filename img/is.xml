@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <array>
 	<dict>
 		<key>Name</key>
-		<string>Magazine</string>
+		<string>Magazine-0</string>
 		<key>Title</key>
 		<string>Magazine Issue 0</string>
 		<key>Date</key>
 		<date>2011-10-01T06:00:00Z</date>
 		<key>Cover</key>
-		<string>http://iphonekatalog.com/img/magazine-0.png</string>
+		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-0.png</string>
 		<key>Content</key>
-		<string>http://iphonekatalog.com/img/magazine-0.pdf</string>
+		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-0.pdf</string>
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>Magazine</string>
+		<string>Magazine-1</string>
 		<key>Title</key>
 		<string>Magazine Issue 1</string>
 		<key>Date</key>
@@ -28,7 +26,7 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>Magazine</string>
+		<string>Magazine-2</string>
 		<key>Title</key>
 		<string>Magazine Issue 2</string>
 		<key>Date</key>
@@ -40,7 +38,7 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>Magazine</string>
+		<string>Magazine-3</string>
 		<key>Title</key>
 		<string>Magazine Issue 3</string>
 		<key>Date</key>
@@ -52,7 +50,7 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>Magazine</string>
+		<string>Magazine-4</string>
 		<key>Title</key>
 		<string>Magazine Issue 4</string>
 		<key>Date</key>
