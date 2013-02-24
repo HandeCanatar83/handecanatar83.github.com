@@ -20,7 +20,7 @@
 		<key>Date</key>
 		<date>2011-10-15T06:00:00Z</date>
 		<key>Cover</key>
-		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-1.png</string>
+		<string>http://iphonekatalog.com/img/magazine-1.png</string>
 		<key>Content</key>
 		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-1.pdf</string>
 	</dict>
@@ -32,7 +32,7 @@
 		<key>Date</key>
 		<date>2011-11-01T07:00:00Z</date>
 		<key>Cover</key>
-		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-2.png</string>
+		<string>http://iphonekatalog.com/img/magazine-2.png</string>
 		<key>Content</key>
 		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-2.pdf</string>
 	</dict>
@@ -44,7 +44,7 @@
 		<key>Date</key>
 		<date>2011-11-15T07:00:00Z</date>
 		<key>Cover</key>
-		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-3.png</string>
+		<string>http://iphonekatalog.com/img/magazine-3.png</string>
 		<key>Content</key>
 		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-3.pdf</string>
 	</dict>
@@ -56,7 +56,7 @@
 		<key>Date</key>
 		<date>2011-12-01T07:00:00Z</date>
 		<key>Cover</key>
-		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-4.png</string>
+		<string>http://iphonekatalog.com/img/magazine-4.png</string>
 		<key>Content</key>
 		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-4.pdf</string>
 	</dict>
