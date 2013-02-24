@@ -4,9 +4,9 @@
 		<key>Name</key>
 		<string>Magazine-0</string>
 		<key>Title</key>
-		<string>Magazine Issue 0</string>
+		<string>IPhone Katalog 6</string>
 		<key>Date</key>
-		<date>2011-10-01T06:00:00Z</date>
+		<date>2013-06-01T06:00:00Z</date>
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/magazine-0.png</string>
 		<key>Content</key>
@@ -16,9 +16,9 @@
 		<key>Name</key>
 		<string>Magazine-1</string>
 		<key>Title</key>
-		<string>Magazine Issue 1</string>
+		<string>IPhone Katalog 5</string>
 		<key>Date</key>
-		<date>2011-10-15T06:00:00Z</date>
+		<date>2011-05-15T06:00:00Z</date>
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/magazine-1.png</string>
 		<key>Content</key>
@@ -28,9 +28,9 @@
 		<key>Name</key>
 		<string>Magazine-2</string>
 		<key>Title</key>
-		<string>Magazine Issue 2</string>
+		<string>IPhone Katalog 4</string>
 		<key>Date</key>
-		<date>2011-11-01T07:00:00Z</date>
+		<date>2011-04-01T07:00:00Z</date>
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/magazine-2.png</string>
 		<key>Content</key>
@@ -40,9 +40,9 @@
 		<key>Name</key>
 		<string>Magazine-3</string>
 		<key>Title</key>
-		<string>Magazine Issue 3</string>
+		<string>IPhone Katalog 3</string>
 		<key>Date</key>
-		<date>2011-11-15T07:00:00Z</date>
+		<date>2011-03-15T07:00:00Z</date>
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/magazine-3.png</string>
 		<key>Content</key>
@@ -52,9 +52,9 @@
 		<key>Name</key>
 		<string>Magazine-4</string>
 		<key>Title</key>
-		<string>Magazine Issue 4</string>
+		<string>IPhone Katalog 2</string>
 		<key>Date</key>
-		<date>2011-12-01T07:00:00Z</date>
+		<date>2011-02-01T07:00:00Z</date>
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/magazine-4.png</string>
 		<key>Content</key>
