@@ -22,7 +22,7 @@
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/magazine-1.png</string>
 		<key>Content</key>
-		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-1.pdf</string>
+		<string>http://iphonekatalog.com/img/magazine-1.pdf</string>
 	</dict>
 	<dict>
 		<key>Name</key>
@@ -34,7 +34,7 @@
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/magazine-2.png</string>
 		<key>Content</key>
-		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-2.pdf</string>
+		<string>http://iphonekatalog.com/img/magazine-2.pdf</string>
 	</dict>
 	<dict>
 		<key>Name</key>
@@ -46,7 +46,7 @@
 		<key>Cover</key>
 		<string>http://iphonekatalog.com/img/magazine-3.png</string>
 		<key>Content</key>
-		<string>http://www.viggiosoft.com/media/data/blog/newsstand/magazine-3.pdf</string>
+		<string>http://iphonekatalog.com/img/magazine-3.pdf</string>
 	</dict>
 	<dict>
 		<key>Name</key>
