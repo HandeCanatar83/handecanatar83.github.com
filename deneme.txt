@@ -1,20 +1,11 @@
-
 [
 {
-"firmaid":"125348",
-"firmaad":"Ülker",
-"salonno":"2",
-"standno":"32-B",
-"resimad":"325348.jpg",
-"reklamvarmi":"0",
+"grupid":"1",
+"grupad":"Plastik Ambalaj Malzemeleri İmalatı"
 }
 ,
 {
-"firmaid":"125349",
-"firmaad":"Şölen",
-"salonno":"3",
-"standno":"33-B",
-"resimad":"425349.jpg",
-"reklamvarmi":"0",
+"grupid":"2",
+"grupad":"Metal Ambalaj Malzemeleri İmalatı"
 }
 ]
