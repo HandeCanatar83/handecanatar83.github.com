@@ -5,8 +5,9 @@
         "imageData": "raw data",
         "imageFormat": "JPEG",
         "expirationTime": 1339538400000
-    },
-	"obj": {
+    }
+    ,
+    {
         "eventDate": "Jun 13, 2012 12:00:00 AM",
         "text": "hjhj",
         "imageData": "raw data",
